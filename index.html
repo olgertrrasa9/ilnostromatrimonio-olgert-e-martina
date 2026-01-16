@@ -157,6 +157,20 @@
 
 <body>
 
+<!-- MUSICA DI SOTTOFONDO -->
+<audio id="bg-music" autoplay loop muted>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  document.addEventListener("click", function () {
+    const music = document.getElementById("bg-music");
+    music.muted = false;
+    music.volume = 0.25;
+    music.play();
+  }, { once: true });
+</script>
+
 <div class="lang">
   <button onclick="setLang('it')">IT</button>
   <button onclick="setLang('sq')">AL</button>
@@ -166,7 +180,6 @@
   <h1>Olgert & Martina</h1>
 </header>
 
-<!-- INTRO -->
 <section>
   <div class="container">
     <p id="intro" class="intro-text">
@@ -180,7 +193,6 @@
   </div>
 </section>
 
-<!-- CERIMONIA -->
 <section>
   <div class="container">
     <div class="section-title">
@@ -203,7 +215,6 @@
   </div>
 </section>
 
-<!-- STRUTTURE -->
 <section>
   <div class="container">
     <div class="section-title">
@@ -231,7 +242,6 @@
   </div>
 </section>
 
-<!-- COME ARRIVARE -->
 <section>
   <div class="container">
     <div class="section-title">
@@ -239,26 +249,20 @@
     </div>
 
     <p id="arrivalText" class="intro-text">
-    Katalea Palace dista circa 1 ora e 10 minuti dall’Aeroporto di Tirana ed è facilmente raggiungibile in auto lungo la strada E853.
-    La struttura dispone di un ampio parcheggio.
+      Katalea Palace dista circa 1 ora e 10 minuti dall’Aeroporto di Tirana ed è facilmente raggiungibile in auto lungo la strada E853.
+      La struttura dispone di un ampio parcheggio.
     </p>
 
-    <iframe
-      src="https://www.google.com/maps?q=40.696138065699465,19.532816837859283&output=embed"
-      loading="lazy">
-    </iframe>
+    <iframe src="https://www.google.com/maps?q=40.696138065699465,19.532816837859283&output=embed"></iframe>
 
     <div style="text-align:center;">
-      <a class="maps-btn"
-         href="https://www.google.com/maps/search/?api=1&query=40.696138065699465,19.532816837859283"
-         target="_blank">
+      <a class="maps-btn" href="https://www.google.com/maps/search/?api=1&query=40.696138065699465,19.532816837859283" target="_blank">
         Apri su Google Maps
       </a>
     </div>
   </div>
 </section>
 
-<!-- RSVP -->
 <section>
   <div class="container" style="text-align:center;">
     <div class="section-title">
@@ -268,9 +272,7 @@
     <div id="countdown" class="countdown"></div>
 
     <div class="whatsapp">
-      <a href="https://wa.me/393297544593" target="_blank">
-        Scrivici su WhatsApp
-      </a>
+      <a href="https://wa.me/393297544593" target="_blank">Scrivici su WhatsApp</a>
     </div>
   </div>
 </section>
