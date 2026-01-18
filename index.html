@@ -216,6 +216,9 @@
         <div id="ceremonyTime" class="big-time"></div>
         <div id="pressoText" class="presso"></div>
         <div class="big-date">KATALEA PALACE</div>
+
+        <!-- ✅ AGGIUNTA CALENDARIO -->
+        <a id="calendarBtn" class="maps-btn" download="Matrimonio_Olgert_Martina.ics"></a>
       </div>
 
       <div class="card hotel">
@@ -307,6 +310,34 @@
         : "<strong>" + days + "</strong><br>giorni al nostro sì";
   }
 
+  /* ✅ AGGIUNTA CALENDARIO */
+  function generateICS(lang) {
+    const title =
+      lang === "sq"
+        ? "Dasma e Olgert & Martina"
+        : "Matrimonio Olgert & Martina";
+
+    const description =
+      lang === "sq"
+        ? "Ceremonia dhe dreka në Katalea Palace"
+        : "Cerimonia e ricevimento presso Katalea Palace";
+
+    const ics =
+`BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:${title}
+DESCRIPTION:${description}
+LOCATION:Katalea Palace, Albania
+DTSTART:20260425T090000Z
+DTEND:20260425T150000Z
+END:VEVENT
+END:VCALENDAR`;
+
+    document.getElementById("calendarBtn").href =
+      URL.createObjectURL(new Blob([ics], { type: "text/calendar;charset=utf-8" }));
+  }
+
   function setLang(lang) {
     updateCountdown(lang);
 
@@ -344,7 +375,7 @@
 
     document.getElementById("arrivalText").innerText =
       lang === "sq"
-        ? "Katalea Palace ndodhet rreth 1 orë e 30 minuta nga Aeroporti i Tiranës dhe arrihet lehtësisht me makinë. Rekomandojmë të merrni me qira një makinë me tërheqje dhe dorëzim direkt në aeroport dhe ta rezervoni disa ditë më parë. Parkim i madh në dispozicion."
+        ? "Katalea Palace ndodhet rreth 1 orë e 30 minuta nga Aeroporti i Tiranës dhe arrihet lehtësisht me makinë. Për të lëvizur me komoditet të plotë, rekomandojmë të merrni me qira një makinë me marrje dhe dorëzim direkt në aeroport dhe ta rezervoni disa ditë më parë. Struktura disponon gjithashtu një parkim të madh."
         : "Katalea Palace dista circa 1 ora e 30 minuti dall’Aeroporto di Tirana ed è facilmente raggiungibile in auto. Per muoversi in totale comodità, consigliamo di noleggiare un’auto con ritiro e riconsegna direttamente in aeroporto e di prenotare con qualche giorno di anticipo. La struttura dispone inoltre di un ampio parcheggio.";
 
     document.getElementById("rsvpTitle").innerText =
@@ -369,6 +400,12 @@
       "https://wa.me/355694650614?text=" + encodeURIComponent(msg);
     document.getElementById("wa-yjet").href =
       "https://wa.me/355696807777?text=" + encodeURIComponent(msg);
+
+    /* ✅ AGGIUNTA CALENDARIO */
+    document.getElementById("calendarBtn").innerText =
+      lang === "sq" ? "Shto në kalendar" : "Aggiungi al calendario";
+
+    generateICS(lang);
   }
 
   setLang("it");
