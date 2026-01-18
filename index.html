@@ -47,6 +47,27 @@
       font-weight: 500;
     }
 
+    /* 🎵 PULSANTE MUSICA */
+    .music-btn {
+      position: fixed;
+      top: 70px;
+      right: 20px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #c9a24d;
+      color: white;
+      font-size: 24px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    .music-btn.paused {
+      background: #bbb;
+    }
+
     section { padding: 70px 20px; }
     .container { max-width: 1000px; margin: auto; }
 
@@ -137,17 +158,30 @@
 
 <body>
 
+<!-- AUDIO -->
 <audio id="bg-music" autoplay loop muted>
   <source src="musica1.mp3" type="audio/mpeg">
 </audio>
 
+<!-- 🎵 PULSANTE MUSICA -->
+<button id="musicBtn" class="music-btn paused" aria-label="Musica">🎵</button>
+
 <script>
-  document.addEventListener("click", function () {
-    const music = document.getElementById("bg-music");
-    music.muted = false;
-    music.volume = 0.25;
-    music.play();
-  }, { once: true });
+  const music = document.getElementById("bg-music");
+  const musicBtn = document.getElementById("musicBtn");
+
+  music.volume = 0.25;
+
+  musicBtn.addEventListener("click", () => {
+    if (music.muted || music.paused) {
+      music.muted = false;
+      music.play();
+      musicBtn.classList.remove("paused");
+    } else {
+      music.pause();
+      musicBtn.classList.add("paused");
+    }
+  });
 </script>
 
 <div class="lang">
@@ -250,7 +284,6 @@
       <h2 id="rsvpTitle"></h2>
     </div>
 
-    <!-- PULSANTE SPOSTATO SOPRA IL COUNTDOWN -->
     <div class="whatsapp">
       <a id="main-wa" href="https://wa.me/393297544593" target="_blank"></a>
     </div>
