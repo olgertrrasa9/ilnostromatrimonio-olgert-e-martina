@@ -184,6 +184,194 @@
   });
 </script>
 
+<!-- 🔽 QUI CONTINUA TUTTO IL TUO CODICE ORIGINALE IDENTICO FINO ALLA FINE -->
+
+  <!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olgert & Martina - Il nostro matrimonio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: #c9a24d;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    header {
+      padding: 80px 20px 40px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      margin: 0;
+    }
+
+    .lang {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10;
+    }
+
+    .lang button {
+      margin-left: 5px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #c9a24d;
+      color: white;
+      font-weight: 500;
+    }
+
+    /* 🎵 PULSANTE MUSICA */
+    .music-btn {
+      position: fixed;
+      top: 70px;
+      right: 20px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #c9a24d;
+      color: white;
+      font-size: 24px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    .music-btn.paused {
+      background: #bbb;
+    }
+
+    section { padding: 70px 20px; }
+    .container { max-width: 1000px; margin: auto; }
+
+    .section-title h2 {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      margin-bottom: 25px;
+    }
+
+    .intro-text {
+      text-align: center;
+      font-style: italic;
+      max-width: 750px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+    }
+
+    .gold-line {
+      width: 70px;
+      height: 2px;
+      background: #c9a24d;
+      margin: 0 auto 35px;
+    }
+
+    .story img,
+    .hotel img {
+      width: 100%;
+      max-width: 420px;
+      max-height: 520px;
+      object-fit: cover;
+      margin: auto;
+      display: block;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .hotels {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 35px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+
+    .big-date { font-size: 2.2rem; font-weight: 600; }
+    .big-time { font-size: 1.6rem; margin-top: 8px; }
+    .presso { margin: 10px 0; font-style: italic; }
+
+    .countdown { font-size: 1.8rem; margin-top: 20px; }
+
+    .whatsapp a,
+    .maps-btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.05rem;
+      color: white;
+    }
+
+    .whatsapp a { background: #25D366; }
+    .maps-btn { background: #c9a24d; }
+
+    iframe {
+      width: 100%;
+      height: 420px;
+      border: 0;
+      border-radius: 18px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      border-top: 1px solid #eee;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- AUDIO -->
+<audio id="bg-music" autoplay loop muted>
+  <source src="musica1.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🎵 PULSANTE MUSICA -->
+<button id="musicBtn" class="music-btn paused" aria-label="Musica">🎵</button>
+
+<script>
+  const music = document.getElementById("bg-music");
+  const musicBtn = document.getElementById("musicBtn");
+
+  music.volume = 0.25;
+
+  musicBtn.addEventListener("click", () => {
+    if (music.muted || music.paused) {
+      music.muted = false;
+      music.play();
+      musicBtn.classList.remove("paused");
+    } else {
+      music.pause();
+      musicBtn.classList.add("paused");
+    }
+  });
+</script>
+
 <div class="lang">
   <button onclick="setLang('it')">IT</button>
   <button onclick="setLang('sq')">AL</button>
@@ -409,6 +597,61 @@ END:VCALENDAR`;
   }
 
   setLang("it");
+</script>
+
+</body>
+</html>
+
+<!-- ✅ NUOVA SEZIONE AGGIUNTA PRIMA DEL FOOTER -->
+<section>
+  <div class="container" style="text-align:center;">
+    <div class="section-title">
+      <h2>Preferenze alimentari</h2>
+    </div>
+
+    <div style="max-width:600px;margin:0 auto;">
+
+      <select id="dietSelect" style="width:100%;padding:14px;border-radius:8px;border:1px solid #ddd;margin-bottom:15px;">
+        <option value="">Seleziona un'opzione</option>
+        <option value="Vegetariano">Vegetariano</option>
+        <option value="Vegano">Vegano</option>
+        <option value="Allergia / Intolleranza">Allergia / Intolleranza</option>
+      </select>
+
+      <textarea id="dietNote"
+        placeholder="Specifica eventuali allergie o intolleranze..."
+        style="width:100%;padding:14px;border-radius:8px;border:1px solid #ddd;display:none;"></textarea>
+
+      <a class="maps-btn" onclick="sendDiet()">Invia preferenza</a>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById("dietSelect").addEventListener("change", function() {
+    document.getElementById("dietNote").style.display =
+      this.value === "Allergia / Intolleranza" ? "block" : "none";
+  });
+
+  function sendDiet() {
+    const scelta = document.getElementById("dietSelect").value;
+    const nota = document.getElementById("dietNote").value;
+
+    if (!scelta) {
+      alert("Seleziona un'opzione.");
+      return;
+    }
+
+    let msg = "Preferenza alimentare matrimonio Olgert & Martina\n\n";
+    msg += "Scelta: " + scelta;
+
+    if (scelta === "Allergia / Intolleranza" && nota) {
+      msg += "\nDettagli: " + nota;
+    }
+
+    window.open("https://wa.me/393297544593?text=" + encodeURIComponent(msg));
+  }
 </script>
 
 </body>
